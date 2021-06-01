@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wsamaa_project/cubit/app_state.dart';
 import 'package:wsamaa_project/screens/categories_screen.dart';
 import 'package:wsamaa_project/screens/home_screen.dart';
-import 'package:wsamaa_project/screens/setting_screen.dart';
+import 'package:wsamaa_project/screens/more_screen/more_screen.dart';
 
 
 class AppCubit extends Cubit<AppState>{

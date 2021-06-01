@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:wsamaa_project/size_config.dart';
 
@@ -11,6 +12,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
   @override
   void initState() {
     // TODO: implement initState
+    Firebase.initializeApp();
     super.initState();
     Future.delayed(Duration(seconds: 3),(){
       Navigator.pushReplacementNamed(context, '/main_screen');
