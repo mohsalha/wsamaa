@@ -66,6 +66,7 @@ class _PostOfCategoryState extends State<PostOfCategory> {
                                       _posts.elementAt(index)['featured_media'],
                                   title: _posts.elementAt(index)['title']
                                       ['rendered'],
+                                  content: _posts.elementAt(index)['content']['rendered'],
                                 );
                               },
                             );

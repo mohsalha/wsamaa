@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemCount: _posts.length,
                         itemBuilder: (context, index) {
 
-                      return WsamaaEssay(imgId:_posts.elementAt(index)['featured_media'], title: _posts.elementAt(index)['title']['rendered']);
+                      return WsamaaEssay(imgId:_posts.elementAt(index)['featured_media'], title: _posts.elementAt(index)['title']['rendered'],content: _posts.elementAt(index)['content']['rendered'],);
                     });
                   }
                 }
