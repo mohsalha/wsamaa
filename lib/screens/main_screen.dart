@@ -19,7 +19,6 @@ class MainScreen extends StatelessWidget {
                 title: Text('${cubit.title.elementAt(cubit.currentIndex)}'),
 
               ),
-
               bottomNavigationBar: BottomNavigationBar(
                 elevation: 8,
                 currentIndex: cubit.currentIndex,
