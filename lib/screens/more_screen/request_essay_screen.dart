@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wsamaa_project/controller/firestore_controller.dart';
 import 'package:wsamaa_project/models/add_essay.dart';
+import 'package:wsamaa_project/models/request_essay.dart';
 import 'package:wsamaa_project/size_config.dart';
 import 'package:wsamaa_project/utiles/Helper.dart';
 
-class AddEsaayScreen extends StatefulWidget {
+class RequestEssayScreen extends StatefulWidget {
   @override
-  _AddEsaayScreenState createState() => _AddEsaayScreenState();
+  _RequestEssayScreenState createState() => _RequestEssayScreenState();
 }
 
-class _AddEsaayScreenState extends State<AddEsaayScreen> {
+class _RequestEssayScreenState extends State<RequestEssayScreen> {
   late TextEditingController _titleController;
-  late TextEditingController _detailsController;
   late TextEditingController _nameController;
   late TextEditingController _emailController;
 
@@ -21,7 +21,6 @@ class _AddEsaayScreenState extends State<AddEsaayScreen> {
     // TODO: implement initState
     super.initState();
     _titleController = TextEditingController();
-    _detailsController = TextEditingController();
     _nameController = TextEditingController();
     _emailController = TextEditingController();
   }
@@ -31,7 +30,6 @@ class _AddEsaayScreenState extends State<AddEsaayScreen> {
     // TODO: implement dispose
     super.dispose();
     _titleController.dispose();
-    _detailsController.dispose();
     _nameController.dispose();
     _emailController.dispose();
   }
@@ -58,21 +56,18 @@ class _AddEsaayScreenState extends State<AddEsaayScreen> {
                   style: addEssayHeadStyle(),
                 ),
                 Text(
-                  '1- يجب ان تكون المقالة من تعبيرك الخاص، وغير منسوخة من اي موقع اخر.',
+                  '1- سوف يتم الاجابة على طلبكم في أسرع وقت ممكن وتوفير المقالة.',
                   style: addEssayDetailsStyle(),
                 ),
                 Text(
-                  '2- سوف يتم اضافة المقالة بعد التدقيق عليها من قبل الفريق الخاص بنا.',
+                  '2- اذا تأخرنا في نشر المقالة فأعلم اننا نراجع المصادر بشكل جيد لاعطائكم مقالة تفي بحقكم.',
                   style: addEssayDetailsStyle(),
                 ),
                 Text(
-                  '3- سوف يتم وضع الاسم الخاص بك في نهاية المقالة التي تكتبيها، لذا احرصي ان يكون الاسم صحيح.',
+                  '3- لا تخجل في طرح مشكلتك لنقوم بحلها.',
                   style: addEssayDetailsStyle(),
                 ),
-                Text(
-                  '4- في حال كانت مقالاتك جميلة وذات سرد نصي رائع سوف يتم التواصل معكم عبر الايميل للعمل رسمياً في موقع وسامة.',
-                  style: addEssayDetailsStyle(),
-                ),
+
                 SizedBox(
                   height: SizeConfig.scaleHeight(30),
                 ),
@@ -103,11 +98,7 @@ class _AddEsaayScreenState extends State<AddEsaayScreen> {
                 SizedBox(
                   height: SizeConfig.scaleHeight(20),
                 ),
-                defaultTextField(
-                    lable: 'تفاصيل المقالة',
-                    controller: _detailsController,
-                    keyboard: TextInputType.text,
-                    maxLines: 10),
+
                 SizedBox(
                   height: SizeConfig.scaleHeight(20),
                 ),
@@ -116,10 +107,10 @@ class _AddEsaayScreenState extends State<AddEsaayScreen> {
                   height: SizeConfig.scaleHeight(50),
                   child: ElevatedButton(
                     onPressed: () {
-                      preformAddEssay();
+                      preformRequestEssay();
                     },
                     child: Text(
-                      'أضف المقالة الأن',
+                      'اطلب الان!',
                       style: TextStyle(
                         fontSize: SizeConfig.scaleTextFont(25),
                         fontFamily: 'b',
@@ -141,12 +132,12 @@ class _AddEsaayScreenState extends State<AddEsaayScreen> {
     );
   }
 
-  Future preformAddEssay() async {
+  Future preformRequestEssay() async {
     if (checkData()) {
-      addEssay();
+      requestEssay();
       Navigator.pop(context);
       Fluttertoast.showToast(
-        msg: "تم إرسال المقالة الى المشرفين",
+        msg: "تم إرسال الطلب الى المشرفين",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
@@ -158,7 +149,7 @@ class _AddEsaayScreenState extends State<AddEsaayScreen> {
   }
 
   bool checkData() {
-    if (_detailsController.text.isNotEmpty &&
+    if (
         _titleController.text.isNotEmpty &&
         _emailController.text.isNotEmpty &&
         _nameController.text.isNotEmpty) {
@@ -176,17 +167,17 @@ class _AddEsaayScreenState extends State<AddEsaayScreen> {
     return false;
   }
 
-  Future addEssay() async {
-    await FirestoreController.instance.creat(getEssay());
+  Future requestEssay() async {
+    await FirestoreController.instance.requestEssay(getRequest());
   }
 
-  AddEssay getEssay() {
-    AddEssay essay = AddEssay(
+  RequestEssay getRequest() {
+    RequestEssay request = RequestEssay(
       name: _nameController.text,
       email: _emailController.text,
       title: _titleController.text,
-      details: _detailsController.text,
+
     );
-    return essay;
+    return request;
   }
 }

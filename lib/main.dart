@@ -3,6 +3,7 @@ import 'package:wsamaa_project/models/add_essay.dart';
 import 'package:wsamaa_project/screens/launch_screen.dart';
 import 'package:wsamaa_project/screens/main_screen.dart';
 import 'package:wsamaa_project/screens/more_screen/add_essay.dart';
+import 'package:wsamaa_project/screens/more_screen/request_essay_screen.dart';
 
 
 main() {
@@ -45,6 +46,7 @@ class _MainAppState extends State<MainApp> {
         '/launch_screen': (context) => LaunchScreen(),
         '/main_screen': (context) => MainScreen(),
         '/add_essay': (context) => AddEsaayScreen(),
+        '/request_essay': (context) => RequestEssayScreen(),
       },
     );
   }

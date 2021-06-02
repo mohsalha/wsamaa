@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wsamaa_project/size_config.dart';
 
 Widget errorWidget() => Center(
@@ -97,3 +98,5 @@ Widget defaultTextField({
         fillColor: Color.fromRGBO(247, 247, 247, 1),
       ),
     );
+
+

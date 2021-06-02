@@ -24,7 +24,7 @@ class SittingScreen extends StatelessWidget {
           SizedBox(
             height: SizeConfig.scaleHeight(50),
           ),
-          defaultButton(title: 'اطلبي مقالتك',context: context,route: ''),
+          defaultButton(title: 'اطلبي مقالتك',context: context,route: '/request_essay'),
           SizedBox(
             height: SizeConfig.scaleHeight(20),
           ),

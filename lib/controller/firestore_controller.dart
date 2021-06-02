@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:wsamaa_project/models/add_essay.dart';
+import 'package:wsamaa_project/models/request_essay.dart';
 
 class FirestoreController{
 
@@ -33,21 +34,10 @@ class FirestoreController{
     return true;
   }
 
-  Future<List<AddEssay>> read() async {
-    QuerySnapshot _querySnapshot = await _firestore.collection('essay').get();
-    List<AddEssay> essay = [];
-    _querySnapshot.docs.forEach((element) {
-      essay.add(
-        AddEssay(
-          id: element.id,
-          name: element.data()['name'],
-          email: element.data()['email'],
-          title: element.data()['title'],
-          details: element.data()['details'],
-        ),
-      );
-    });
-    return essay;
+  Future<bool> requestEssay(RequestEssay request) async {
+    DocumentReference _documentReference =
+    await _firestore.collection('requestEssay').add(request.toMap());
+    return true;
   }
 
 

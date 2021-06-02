@@ -17,12 +17,7 @@ class MainScreen extends StatelessWidget {
             child: Scaffold(
               appBar: AppBar(
                 title: Text('${cubit.title.elementAt(cubit.currentIndex)}'),
-                actions: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Icon(Icons.search),
-                  ),
-                ],
+
               ),
 
               bottomNavigationBar: BottomNavigationBar(
